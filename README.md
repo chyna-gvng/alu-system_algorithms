@@ -1,2 +1,2 @@
-# alu-system_algorithms
-DSA
+### Data Structures & Alogrithms
+Readme file for *alu-system_algorithms* repo.
