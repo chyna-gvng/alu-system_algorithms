@@ -1,2 +1,2 @@
 ### Data Structures & Alogrithms
-Readme file for *alu-system_algorithms* repo.
+Readme file for the repo *alu-system_algorithms*.
