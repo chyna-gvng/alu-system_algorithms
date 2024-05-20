@@ -10,22 +10,50 @@
 
 vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 {
-    if (!graph || !str) return (NULL);
+	vertex_t *current_vertex;
+	vertex_t *new_vertex;
 
-    for (vertex_t *v = graph->vertices; v; v = v->next)
-        if (strcmp(v->content, str) == 0) return (NULL);
+	if (graph == NULL || str == NULL)
+		return (NULL);
 
-    vertex_t *new_vertex = malloc(sizeof(*new_vertex));
-    if (!new_vertex || !(new_vertex->content = strdup(str))) {
-        free(new_vertex);
-        return (NULL);
-    }
+	for (current_vertex = graph->vertices; current_vertex != NULL;
+	     current_vertex = current_vertex->next)
+	{
+		if (strcmp(current_vertex->content, str) == 0)
+			return (NULL);
+	}
+	new_vertex = (vertex_t *)malloc(sizeof(vertex_t));
 
-    new_vertex->index = graph->nb_vertices++;
-    new_vertex->nb_edges = 0;
-    new_vertex->edges = NULL;
-    new_vertex->next = graph->vertices;
-    graph->vertices = new_vertex;
+	if (new_vertex == NULL)
+		return (NULL);
 
-    return (new_vertex);
+	new_vertex->content = strdup(str);
+
+	if (new_vertex->content == NULL)
+	{
+		free(new_vertex);
+		return (NULL);
+	}
+	new_vertex->index = graph->nb_vertices;
+	new_vertex->nb_edges = 0;
+	new_vertex->edges = NULL;
+	new_vertex->next = NULL;
+
+	if (graph->vertices == NULL)
+	{
+		graph->vertices = new_vertex;
+	}
+	else
+	{
+		vertex_t *current = graph->vertices;
+
+		while (current->next != NULL)
+		{
+			current = current->next;
+		}
+		current->next = new_vertex;
+	}
+	graph->nb_vertices++;
+
+	return (new_vertex);
 }
