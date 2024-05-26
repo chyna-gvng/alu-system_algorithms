@@ -2,9 +2,7 @@
 
 /**
  * heap_create - program that creates a new heap data structure
- *
  * @data_cmp: a pointer to the comparison function for node data
- *
  * Return: a pointer to the created heap_t structure, or NULL if it fails
  */
 
