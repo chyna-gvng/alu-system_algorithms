@@ -1,9 +1,9 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
-SRC0 = ../huffman.c
+SRC0 = huffman.c
 OBJ0 = $(SRC0:.c=.o)
-NAME0 = ../huffman.o
+NAME0 = huffman
 
 .PHONY: all clean oclean flcean re
 
