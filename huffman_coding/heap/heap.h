@@ -43,6 +43,7 @@ typedef struct heap_s
  * a binary tree node queue
  * @node: a pointer to the binary tree node
  * @next: a pointer to the next node in the queue
+ * @restore_heapify: a pointer to the restore_heapify function
  */
 
 typedef struct binary_tree_node_queue_s
