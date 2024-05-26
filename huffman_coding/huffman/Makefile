@@ -1,18 +1,24 @@
-SRC =	$(shell find . -name "*.c") \
-	$(shell find .. -name "*.c")
-OBJ =	$(SRC:.c=.o)
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -pedantic
 
+SRC0 = huffman.c
+OBJ0 = $(SRC0:.c=.o)
+NAME0 = huffman
 
-CC =	gcc
-FLAGS=	-Wall -Werror -Wextra -pedantic -g3
+.PHONY: all clean oclean flcean re
 
-huffman: $(OBJ)
-	$(CC) $^ $(FLAGS) -o huffman
+all: $(OBJ0)
+	$(CC) $(OBJ0) -o $(NAME0)
 
-%o: %.c
-	@$(CC) -c -I. -Iheap $< $(FLAGS) -o $@ 
-
-
-.PHONY: clean
 clean:
-	rm -f $(OBJ) huffman
+	$(RM) *~ $(NAME0)
+
+oclean:
+	$(RM) $(OBJ0)
+
+fclean: clean oclean
+
+re: oclean all
+
+huffman: $(OBJ0)
+	$(CC) $(OBJ0) -o $(NAME0)
