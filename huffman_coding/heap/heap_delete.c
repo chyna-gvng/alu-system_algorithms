@@ -47,5 +47,3 @@ void heap_delete(heap_t *heap, void (*free_data)(void *))
 
 	free(heap);
 }
-
-// Path: huffman_coding/heap/heap_extract.c
